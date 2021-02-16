@@ -22,7 +22,7 @@ if (!$yhteys) {
     print $error;
     return;
 }
-$tietokanta=mysqli_select_db($yhteys, "ryhmä1_projekti");
+$tietokanta=mysqli_select_db($yhteys, "trtkp20a3");
 if (!$tietokanta) {
 	$error=" Connection failed1 ";
     print $error;
@@ -36,18 +36,20 @@ if (!$stmt) {
     print $error;
     return;
 }
-$ok=mysqli_stmt_bind_param($stmt, "ss" ,$name, $rate, $message);
+$ok=mysqli_stmt_bind_param($stmt, "sss" ,$name, $rate, $message);
 if (!$ok) {
-	$error=" SQL preparation failed ";
+	$error=" SQL preparation failed gd";
     print $error;
     return;
 }
-$ok=mysqli_stmt_execute($stmt);
-if (!$ok) {
+/// tässä on ongelma 
+$ok2=mysqli_stmt_execute($stmt);
+if (!$ok2) {
 	$error=" Failed to save, please try again ";
     print $error;
     return;
 }
+mysqli_stmt_close($stmt);
 mysqli_close($yhteys); 
 
 header("Location:££££.html");
