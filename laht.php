@@ -9,11 +9,9 @@ print $fisu->name."<br>";
 print $fisu->rate."<br>";
 print $fisu->message."<br>";
 
-$name=name;
-$rate=rate;
-$message=message;
-
-print $nimi;
+$name=$fisu->name;
+$rate=$fisu->rate;
+$message=$fisu->message;
 
 
 $yhteys = mysqli_connect("localhost", "trtkp20a3", "trtkp20a3passwd");
@@ -28,15 +26,15 @@ if (!$tietokanta) {
     print $error;
     return;
 }
-
-$sql="insert into ryhmä1_projekti(nimi, arvosana, palaute) values(?, ?, ?)";
+//ei ääkkösiä
+$sql="insert into ryhma1_projekti(nimi, arvosana, palaute) values(?, ?, ?)";
 $stmt=mysqli_prepare($yhteys, $sql);
 if (!$stmt) {
 	$error=" SQL preparation failed ";
     print $error;
     return;
 }
-$ok=mysqli_stmt_bind_param($stmt, "sss" ,$name, $rate, $message);
+$ok=mysqli_stmt_bind_param($stmt, "sis" ,$name, $rate, $message);
 if (!$ok) {
 	$error=" SQL preparation failed gd";
     print $error;
@@ -49,9 +47,11 @@ if (!$ok2) {
     print $error;
     return;
 }
+$error=" Thank you for the review! ";
+print $error;
+
 mysqli_stmt_close($stmt);
 mysqli_close($yhteys); 
 
-header("Location:££££.html");
 exit;
 ?>

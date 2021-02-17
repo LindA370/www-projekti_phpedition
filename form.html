@@ -22,17 +22,18 @@ function sendData(form){
     fisu.message=form.message.value;
 
     var x=JSON.stringify(fisu);
-    json.innerHTML=x;  
-    //json ^ tuloste 
+   // json.innerHTML=x;  
+  //json ^ tuloste testiä varten
 
   var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
 if (this.readyState == 4 && this.status == 200) {
 document.getElementById("tulos").innerHTML = this.responseText; 
-thanks.innerHTML = " Thank you for the review! ";    
+//thanks.innerHTML = " Thank you for the review! "; <--- vanha kiitos tervehdys   
 }
 };
-xmlhttp.open("post","da.php", true);
+//HUOM SE PHP OSOITE.
+xmlhttp.open("post", "da.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send("fisu=" + x);
 } 
@@ -58,11 +59,11 @@ xmlhttp.send("fisu=" + x);
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
      <select name="rate" class="form-control" id="rating">
-        <option value="1star">1</option>
-        <option value="2stars">2</option>
-        <option value="3stars">3</option>
-        <option value="4stars">4</option>
-        <option value="5stars">5</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </select>
       </div>
     </div>
@@ -81,7 +82,7 @@ xmlhttp.send("fisu=" + x);
  
   </form>
 <p id="tulos"> </p>
-<p id="json"> </p>
+
 
 <p  id="thanks"></p>
 

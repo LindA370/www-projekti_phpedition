@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Group 1: Saana K, Celia K, Tommi A">
+    <meta name=" sendreviews authors" content ="Celia K, Saana K">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css\main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title> Send a review </title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.3/jquery.min.js"></script>
+<script>
+function sendData(form){
+    var fisu=new Object();
+    var name =form.name.value; 
+    if (name.lenght < 5){
+        window.alert("Name is too short");
+        return;
+    }
+    var message=form.message.value; 
+    if (message.lenght > 200){
+        window.alert("The message is too long");
+        return;
+    }
+    fisu.name=form.name.value;
+    fisu.rate=form.rate.value;
+    fisu.message=form.message.value;
+
+    var x=JSON.stringify(fisu);
+   // json.innerHTML=x;  
+  //json ^ tuloste testiä varten
+
+  var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+document.getElementById("tulos").innerHTML = this.responseText; 
+//thanks.innerHTML = " Thank you for the review! "; <--- vanha kiitos tervehdys   
+}
+};
+//HUOM SE PHP OSOITE.
+xmlhttp.open("post", "da.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("fisu=" + x);
+} 
+</script>
+</head>
+<body>
+    <div class="container">
+    <div class="row">
+        <div class="navbar">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a href="index.html" class="navbar-brand">
+                    <img alt="Black cat logo" src="img/Nimetönn.png"
+                    width="300" height="250">
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                   
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                   
+                    <div class="navbar-nav">
+                        
+                       <!-- linkit muihin -->  
+                  <!-- <a class="nav-link active" aria-current="page" href="index.html">Home</a> -->
+                  <a class="nav-item nav-link" href="index.html">Home</a> 
+                  <a class="nav-item nav-link" href="#">About Us</a> 
+                  <a class="nav-item nav-link" href="#l">Store</a>
+                  <a class="nav-item nav-link" href="#">Contact Us</a>
+                  <a class="nav-item nav-link" href="#">Reviews</a>
+               
+                    </div>
+    
+                    </div>
+                </div>
+            </nav>
+        </div>
+     <div class="row">
+        <div class="content col-md-12">
+            <!-- SISÄLTÖ -->
+        <h2> Your review </h2>
+        <img src="img/lataus.png" alt="Email-icon2" width="400" height="400" style="float: right;">
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et aliquam velit, sed ornare augue. Fusce vitae ex efficitur, viverra lectus ac, condimentum urna. Proin interdum lectus bibendum dui interdum accumsan. Ut id est lobortis justo gravida feugiat sed sed orci. In dignissim est quam, et venenatis tortor viverra sed. Aenean cursus id velit et viverra.</p>
+            <form id="feedback" action="">
+                <div class="info">Your name </div>
+              <div class="form-group">
+                <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                <input name="name" placeholder="Your name here" class="form-control"  type="text">
+                  </div>
+                </div>
+              </div>
+              
+              
+               <div class="rating">Rating :</div>  
+              <div class="form-group">
+                <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                 <select name="rate" class="form-control" id="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                <textarea class="form-control" name="message" id="feedback" placeholder="Write your feedback here" rows="5"></textarea>
+                  </div>
+                </div> <br>
+               <input type="button" class="btn btn-primary" name='ok' value='Send the review' onclick='sendData(this.form);'>
+              </form>
+    
+        
+         <!----->
+        </div>
+    </div>
+     <div class="row">
+        <div class="footer col-md-12">
+            <br>  Loogs - Pohjoisesplanadi 40, HELSINKI 00160 &nbsp; &nbsp; Copyright © 2021 Group 1
+           <hr> 
+           <a href="https://fi-fi.facebook.com/" class="fa fa-facebook"></a> 
+           <a href="https://twitter.com/?lang=fi" class="fa fa-twitter"></a>
+           <a href="https://www.linkedin.com/" class="fa fa-linkedin"></a>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
