@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <title>tehtÃ¤vÃ¤ (6) </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.3/jquery.min.js"></script>
+        <script>
+        function sendData(form){
+            var fisu=new Object();
+            var laji =form.laji.value; 
+            if (laji.lenght < 5){
+                window.alert("Name is too short");
+                return;
+            }
+            var email=form.email.value; 
+            if (email.lenght < 5){
+                window.alert("Email is invalid");
+                return;
+            }
+            fisu.laji=form.laji.value;
+            fisu.paino=form.paino.value;
+            fisu.email=form.email.value;
+            fisu.message=form.message.value;
+
+            var x=JSON.stringify(fisu);
+            json.innerHTML=x;  
+            //json ^ tuloste 
+
+          var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    document.getElementById("tulos").innerHTML = this.responseText;
+        thanks.innerHTML = " Thank you for the review! ";    }
+	};
+	xmlhttp.open("post","6thet.php", true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.send("fisu=" + x);
+
+	}
+        </script>
+    </head>
+<body> 
+    <h2> da phph2 </h2>
+<form>
+    
+    Name : <input type="text" name="laji" id="laji" value=""> <br>
+    Email:<input type="text" name="email">
+    Rating : 
+    <select name="paino">
+        <option value="1">0 </option>
+        <option value="2">1</option>
+        <option value="3">2</option>
+        <option value="4">3</option>
+        <option value="5">4</option>
+        <option value="6">5</option>
+    </select> <br>
+    Review :<textarea name="message" rows="6" cols="25"></textarea><br>
+    <input type="reset" value="Clear">
+    <input type='button' name='ok' value='OK' onclick='sendData(this.form);'>
+</form>
+<!--nimi, arvosana ja palaute-osio.-->
+
+<p id="tulos"> </p>
+<p id="json"> </p>
+
+<p  id="thanks"></p>
+
+    
+</body>
+</html>

@@ -1,0 +1,210 @@
+body {
+  background-image: url("../img/Nimetön2n.jpg");
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 15px;
+  margin: 35px;
+
+}
+
+.content li { 
+  display: table-cell; 
+  position: relative; 
+  padding: 5px 0;
+}
+.content a {
+  color: rgb(37, 37, 37);
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+.content a:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: rgb(31, 31, 31);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.content a:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+@media screen and (max-height: 300px) {
+	ul {
+		margin-top: 40px;
+	}
+}
+
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  color:rgb(31, 31, 31);
+  font-size: 24px;
+  border-bottom: 1px solid #2C2B3C;
+  text-transform: uppercase;
+  
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color:rgb(31, 31, 31);
+  font-size: 22px;
+  border-bottom: 1px solid #2C2B3C;
+  margin: 0.5em 5px;
+  padding: 0.5em 5px;
+  text-transform: uppercase;
+  
+}
+
+p {
+padding: 10px;
+}
+
+.navbar {
+
+  background-color:#121420;  
+  color:white;
+  padding-left: 20px;
+  
+
+}
+
+.navbar-nav {
+  color:white !important;
+  font-size: 24px;
+  padding-left: 30px;
+  letter-spacing: 1px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  
+}
+ 
+.nav-item {
+  margin-top: 30px;
+  margin-right: 10px;
+
+}
+
+:root {
+--mainColor:  #2C2B3C;
+}
+
+.navbar-nav a {
+background:
+   linear-gradient(
+     to bottom, var(--mainColor) 0%,
+     var(--mainColor) 100%
+   );
+background-position: 0 100%;
+background-repeat: repeat-x;
+background-size: 1px 1px;
+color: #dddddd !important;
+text-decoration: none;
+transition: background-size .2s;
+text-transform: uppercase;
+display: inline-block;
+position: relative;
+}
+
+.navbar-nav a:hover {
+background-size: 4px 50px;
+color:#E63946 !important;
+
+}
+
+.content { 
+  background-color: rgb(218, 218, 218);
+  min-height: 300px;
+  padding: 40px;
+  max-width: 100%;
+}
+
+figure {
+    
+  float: center;
+   border: 1px #2C2B3C solid;
+   padding: 4px;
+   margin: auto;
+ }
+
+figcaption {
+ background-color: #121420;;
+ color: white;
+ font-size: 14px;
+ padding: 3px;
+ text-align: center;
+ font-family: 'Times New Roman', Times, serif;
+}
+
+.footer {
+  background-color:#121420;
+  color:white;
+  min-height: 50px;
+  padding: 30px;
+  padding-left: 50px;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#contact {
+margin: 0 auto;
+position: relative;
+width: 50%;
+border:solid 1px;
+background-color:lightgrey
+}
+
+#contact-head {
+  margin:0 auto;
+  position: relative;
+  width: 50%;
+  background-color:lightgrey
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+.fa-facebook {
+  background: #2C2B3C;
+  color: #E63946;
+}
+.fa-twitter {
+  background: #2C2B3C;
+  color: #E63946;
+}
+.fa-linkedin {
+  background: #2C2B3C;
+  color: #E63946;
+}
+.fa:hover {
+  opacity: 0.7;
+}
+.card-title {
+  font-family:Cambria, Cochin, Georgia, Times;
+  font-size: 80px;
+}
+.card-text{
+  font-family:Cambria, Cochin, Georgia, Times;
+  font-size: 20px;
+}
+.card{
+  margin: 5px;  
+}
+
+.btn {
+ color: black;
+
+}
+
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Review form</title>
+<meta charset="UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.3/jquery.min.js"></script>
+<script>
+function sendData(form){
+    var fisu=new Object();
+    var name =form.name.value; 
+    if (name.lenght < 5){
+        window.alert("Name is too short");
+        return;
+    }
+    var message=form.message.value; 
+    if (message.lenght > 200){
+        window.alert("The message is too long");
+        return;
+    }
+    fisu.name=form.name.value;
+    fisu.rate=form.rate.value;
+    fisu.message=form.message.value;
+
+    var x=JSON.stringify(fisu);
+   // json.innerHTML=x;  
+  //json ^ tuloste testiä varten
+
+  var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+document.getElementById("tulos").innerHTML = this.responseText; 
+//thanks.innerHTML = " Thank you for the review! "; <--- vanha kiitos tervehdys   
+}
+};
+//HUOM SE PHP OSOITE.
+xmlhttp.open("post", "da.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("fisu=" + x);
+} 
+</script>
+
+</head>
+
+<body>
+
+<form id="feedback" action="">
+    <div class="info">Name:</div>
+  <div class="form-group">
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+    <input name="name" placeholder="Your name here" class="form-control"  type="text">
+      </div>
+    </div>
+  </div>
+  
+  
+   <div class="rating">Rating:</div>  
+  <div class="form-group">
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+     <select name="rate" class="form-control" id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+    <textarea class="form-control" name="message" id="feedback" placeholder="Write your feedback here" rows="5"></textarea>
+   
+      </div>
+    </div>
+ 
+  
+   <input type="button" class="btn btn-primary" name='ok' value='Submit the review' onclick='sendData(this.form);'>
+ 
+  </form>
+<p id="tulos"> </p>
+
+
+<p  id="thanks"></p>
+
+  </body>
+  </html>
