@@ -10,22 +10,31 @@ else {
     exit;
 }
 
-$yhteys = mysqli_connect('localhost','trtkp20a3','trtkp20a3passwd','trtkp20a3');
+$yhteys = mysqli_connect("localhost", "trtkp20a3", "trtkp20a3passwd");
 
-if(!$yhteys)
-{
-	echo "Error";
 
+if (!$yhteys) {
+
+	echo "No connection to database";
+	exit;
 }
 
-$sql="INSERT INTO ryhma1_users(uname, pwd) VALUES('$uname',
- '$pwd')";
+$tietokanta=mysqli_select_db($yhteys, "trtkp20a3");
+
+if (!$tietokanta) {
+
+	echo "Database error";
+	exit;
+}
+
+$sql="insert into ryhma1_usernames values(?,?)";
 $stmt=mysqli_prepare($yhteys, $sql);
-	mysqli_stmt_bind_param($stmt, 'ss', $uname, $pwd);
+	mysqli_stmt_bind_param($stmt, "ss", $uname, md5($pwd));
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($yhteys);
-echo "Thank you for signing up!";
-exit;
+
+	header("Location:sendrews.html");
+	exit;
 
 ?>
