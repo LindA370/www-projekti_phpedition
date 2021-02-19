@@ -5,9 +5,9 @@ $fisu=json_decode($json);
 set_error_handler("anyError", E_ALL);
 
 
-print $fisu->name."<br>";
-print $fisu->rate."<br>";
-print $fisu->message."<br>";
+//print $fisu->name."<br>";
+//print $fisu->rate."<br>";
+//print $fisu->message."<br>";
 
 $name=$fisu->name;
 $rate=$fisu->rate;
