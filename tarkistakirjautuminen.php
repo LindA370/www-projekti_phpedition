@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if (isset ($_POST["uname"]) && isset ($_POST["pwd"])) {
-$uname=$_POST["uname"];
-$pwd=$_POST["pwd"];
+if (isset ($_POST["unamei"]) && isset ($_POST["pwdi"])) {
+$uname=$_POST["unamei"];
+$pwd=$_POST["pwdi"];
 
 }
 else {
@@ -12,8 +12,8 @@ else {
 }
 
 $yhteys = mysqli_connect("localhost","trtkp20a3","trtkp20a3passwd","trtkp20a3");
-
-$sql="select * from ryhma1_usernames where uname=? and pwd=md5(?)";
+//komennot korjattu ?-ck
+$sql="SELECT * FROM ryhma1_usernames WHERE uname=? AND pwd=md5(?)";
 $stmt=mysqli_prepare($yhteys, $sql);
 mysqli_stmt_bind_param($stmt, "ss", $uname, $pwd);
 mysqli_execute($stmt);
